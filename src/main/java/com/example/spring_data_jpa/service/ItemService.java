@@ -1,7 +1,7 @@
-package com.exmple.spring_data_jpa.service;
+package com.example.spring_data_jpa.service;
 
-import com.exmple.spring_data_jpa.domain.Item;
-import com.exmple.spring_data_jpa.repository.ItemRepository;
+import com.example.spring_data_jpa.domain.Item;
+import com.example.spring_data_jpa.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +20,11 @@ public class ItemService {
     return repository.findByItemId(itemId);
   }
 
+  public Item saveItem(Item item) {
+    return repository.save(item);
+  }
+
+  public void deleteItem(long itemId) {
+    repository.deleteById(itemId);
+  }
 }

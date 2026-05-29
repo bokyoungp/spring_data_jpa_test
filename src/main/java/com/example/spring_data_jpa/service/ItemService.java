@@ -28,8 +28,10 @@ public class ItemService {
   }
 
   @Transactional(readOnly = true)
-  public Item getOneItem(long itemId) {
-    return repository.findByItemId(itemId);
+  public ItemCategoryResponseDto getOneItem(long itemId) {
+    Item findItem = repository.findByItemId(itemId); // DO 를 받아옴
+    ItemCategoryResponseDto itemResponse = ItemCategoryResponseDto.getItemResponse(findItem); // DO 를 DTO 로 변환
+    return itemResponse;
   }
 
   public ItemCreateResponseDto saveItem(ItemCreateRequestDto itemDto)  {
